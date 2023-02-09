@@ -9,7 +9,7 @@
             "type": "python",
             "request": "launch",
             "program": "lab4.py",
-            "console": "externalTerminal",
+            "console": "integratedTerminal",
             "justMyCode": true,
             "args": ["gateway.log"]
         }
