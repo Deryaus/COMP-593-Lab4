@@ -1,7 +1,6 @@
-import pandas as pd
 from log_analysis import get_log_file_path_from_cmd_line, filter_log_by_regex
+import pandas as pd
 import re
-import numpy as np
 
 def main():
     log_file = get_log_file_path_from_cmd_line(1)
@@ -35,16 +34,12 @@ def generate_invalid_user_report(log_file):
     header_row = ('Date', 'Time', 'Username', 'IP Address')
     report_df.to_csv('Invalid_users.csv', index=False, header=header_row,)
     
-# TODO: Step 12
 def generate_source_ip_log(log_file, ip_address):
     regex = f'.* SRC={ip_address} .*'
     address = re.sub('\.', '_', ip_address)
     data = filter_log_by_regex(log_file, regex)[0]
     report_df = pd.DataFrame(data)
     report_df.to_csv(f'source_ip_{address}.log', index=False, header=False,  escapechar=' ', lineterminator=' ')
-    #quotechar=' ' mode='w' , sep=' ' 
-    #with open(f'source_ip_{address}.log', 'w') as f: 
-        #f.write(report_df.to_string(header=False, index=False))
-
+    
 if __name__ == '__main__':
     main()

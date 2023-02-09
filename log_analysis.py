@@ -39,9 +39,7 @@ def filter_log_by_regex(log_file, regex, ignore_case=True, print_summary=False, 
     records = []
     captured_data = []
     regex_flags = re.IGNORECASE if ignore_case else 0
-    
     with open(log_file, 'r') as file:
-
         # Iterate through file line by line
         for line in file:
         # Check line for regex match
@@ -50,7 +48,7 @@ def filter_log_by_regex(log_file, regex, ignore_case=True, print_summary=False, 
                 records.append(line)
                 if match.lastindex:
                     captured_data.append(match.groups())
-
+                    
     if print_records is True:
         print(*records, sep='', end='\n')
 
